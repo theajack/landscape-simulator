@@ -26,6 +26,7 @@ async function main () {
     syncVersion();
     readmeToc();
     await buildWebpack();
+    await buildWebpackCDN();
     console.log(chalk.green('Task All Success!'));
 }
 
@@ -39,6 +40,13 @@ function clearNpm () {
 async function buildWebpack () {
     const done = logLoading('Building Webpack');
     const webpackCmd = 'node ./node_modules/webpack/bin/webpack.js --config webpack-config/build.js';
+    await exec(webpackCmd);
+    done();
+}
+
+async function buildWebpackCDN () {
+    const done = logLoading('Building Webpack cdn');
+    const webpackCmd = 'node ./node_modules/webpack/bin/webpack.js --config webpack-config/build-cdn.js';
     await exec(webpackCmd);
     done();
 }

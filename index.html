@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandscapeSimulator</title>
+    <style>
+        #RotateContainer {
+            padding: 5px;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="../npm/landscape-simulator.min.js" disable-pc="false"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/landscape-simulator/landscape-simulator.min.js" disable-pc="false"></script> -->
+</head>
+
+<body>
+    <h2>LandscapeSimulator</h2>
+
+    <h1><a href="https://www.github.com/theajack/landscape-simulator">LandscapeSimulator</a></h1>
+
+    <p><strong><a href="https://theajack.gitee.io/landscape-simulator">Online Use</a> | <a
+                href="https://github.com/theajack/landscape-simulator/blob/master/README.md">English</a> | <a
+                href="https://github.com/theajack/landscape-simulator/blob/master/helper/version.md">更新日志</a> | <a
+                href="https://github.com/theajack/landscape-simulator/issues/new">反馈错误/缺漏</a> | <a
+                href="https://gitee.com/theajack/landscape-simulator">Gitee</a></strong></p>
+
+    <hr />
+    <p>
+    <details>
+        <summary>Expand Contents</summary>
+        </p>
+
+        <p>
+            <!-- toc -->
+        </p>
+
+        <ul>
+            <li><a href="#landscapesimulator">LandscapeSimulator</a>
+                <ul>
+                    <li><a href="#1-features">1. Features</a></li>
+                    <li><a href="#2-quick-use">2. Quick use</a>
+                        <ul>
+                            <li><a href="#11-npm-way">1.1 npm way</a></li>
+                            <li><a href="#12-cdn">1.2 cdn</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#2-apis">2 APIs</a>
+                        <ul>
+                            <li><a href="#21-init">2.1 init</a></li>
+                            <li><a href="#22-appendchild">2.2 appendChild</a></li>
+                            <li><a href="#23-getsimulatesize">2.3 getSimulateSize</a></li>
+                            <li><a href="#24-issimulatelandscape">2.4 isSimulateLandscape</a></li>
+                            <li><a href="#25-onsimulatechange">2.5 onSimulateChange</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>
+            <!-- tocstop -->
+        </p>
+
+        <p>
+    </details>
+    </p>
+
+    <hr />
+
+    <h2>1. Features</h2>
+
+    <ol>
+        <li>Typescript writing</li>
+        <li>Support mobile vertical screen rotation to simulate horizontal screen</li>
+        <li>Get the simulated landscape state and length and width</li>
+    </ol>
+
+    <h2>2. Quick use</h2>
+
+    <h3>1.1 npm way</h3>
+
+    <p><code>
+    npm i landscape-simulator
+    </code></p>
+
+    <p><code></code>js
+        import LandscapeSimulator from &#39;landscape-simulator&#39;;</p>
+
+    <p>LandscapeSimulator.init({
+        disablePc: false, // default is true
+        })
+        <code></code>
+    </p>
+
+    <p>It is recommended to place the above initialization code in the head for execution</p>
+
+    <h3>1.2 cdn</h3>
+
+    <p>When using the cdn method, the script tag can be placed in the head</p>
+
+    <p><code>html
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/landscape-simulator/landscape-simulator.min.js&quot;&gt;&lt;/script&gt;
+    </code>`</p>
+
+    <p>You can use the property <code>auto-simulate=false</code> to control not to use auto-on simulation, the default
+        is auto-on.</p>
+
+    <p>You can use the attribute <code>disable-pc=false</code> to control the simulation to be enabled on the pc side.
+        The default is not to enable it on the pc side.</p>
+
+    <p>When referenced by cdn, the <code>LandscapeSimulator</code> object will be mounted on the window</p>
+
+    <h2>2 APIs</h2>
+
+    <h3>2.1 init</h3>
+
+    <p>Initialize the simulator, which will be automatically initialized when referenced by cdn</p>
+
+    <p><code>
+    LandscapeSimulator.init({
+      disablePc: false, // default is true
+    })
+    </code></p>
+
+    <h3>2.2 appendChild</h3>
+
+    <p>Add child elements to a rotating container</p>
+
+    <p><code>
+    LandscapeSimulator.appendChild(htmlElement);
+    </code></p>
+
+    <h3>2.3 getSimulateSize</h3>
+
+    <p>Get the emulated later screen size</p>
+
+    <p><code>
+    const size = LandscapeSimulator.getSimulateSize();
+    </code></p>
+
+    <h3>2.4 isSimulateLandscape</h3>
+
+    <p>Get whether it is currently in a state of simulating a landscape screen</p>
+
+    <p><code>
+    const bool = LandscapeSimulator.isSimulateLandscape();
+    </code></p>
+
+    <h3>2.5 onSimulateChange</h3>
+
+    <p>Listen for changes in the state of the simulated horizontal screen</p>
+
+    <p><code>LandscapeSimulator.onSimulateChange(isSimulate =&gt; {
+});</p>
+</body>
+
+</html>

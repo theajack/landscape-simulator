@@ -1,35 +1,3 @@
-const path = require('path');
-const config = require('./config');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const buildProdCommon = require('./build-prod-common');
 
-module.exports = () => {
-
-    return {
-        mode: 'production',
-        entry: path.resolve('./', 'src/index.ts'),
-        output: {
-            path: path.resolve('./', 'npm'),
-            filename: 'landscape-simulator.min.js',
-            library: 'landscapeSimulator',
-            libraryTarget: 'umd',
-            libraryExport: 'default',
-        },
-        resolve: config.resolve,
-        externals: {},
-        module: config.module,
-        plugins: [
-            new CopyWebpackPlugin({
-                patterns: [
-                    {from: 'src/index.d.ts'},
-                    {
-                        from: 'src/types/**/*',
-                        transformPath (targetPath) {
-                            return targetPath.replace('src/', '');
-                        },
-                    },
-                    {from: 'LICENSE'}
-                ]
-            }),
-        ]
-    };
-};
+module.exports = buildProdCommon();

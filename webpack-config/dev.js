@@ -3,9 +3,9 @@ const config = require('./config');
 
 module.exports = {
     mode: 'development',
-    entry: config.entry,
+    entry: path.resolve('./', 'public/main.ts'),
     output: {
-        path: path.resolve('./', 'public/main.ts'),
+        path: path.resolve('./', 'public'),
         filename: 'bundle.js'
     },
     resolve: config.resolve,
