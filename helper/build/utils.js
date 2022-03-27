@@ -2,7 +2,7 @@
  * @Author: tackchen
  * @Date: 2022-03-27 12:13:39
  * @LastEditors: tackchen
- * @LastEditTime: 2022-03-27 12:52:44
+ * @LastEditTime: 2022-03-27 13:21:10
  * @FilePath: /landscape-simulator/helper/build/utils.js
  * @Description: Coding something
  */
@@ -26,6 +26,7 @@ function readFile (filePath) {
 function mkdirDir (filePath) {
     filePath = resolvePath(filePath);
     if (!fs.existsSync(filePath)) {
+        console.log('mkdirSync', filePath);
         fs.mkdirSync(filePath);
     }
 }
@@ -45,7 +46,9 @@ function resolvePath (filePath) {
 }
 
 function clearDirectory (dirPath) {
-    clearDirectoryBase(resolvePath(dirPath));
+    dirPath = resolvePath(dirPath);
+    if (!fs.existsSync(dirPath)) return;
+    clearDirectoryBase(dirPath);
 }
 
 function clearDirectoryBase (dirPath) {
@@ -54,7 +57,7 @@ function clearDirectoryBase (dirPath) {
         const filePath = `${dirPath}/${file}`;
         const stat = fs.statSync(filePath);
         if (stat.isDirectory()) {
-            clearDirectory(filePath);
+            clearDirectoryBase(filePath);
             fs.rmdirSync(filePath);
         } else {
             fs.unlinkSync(filePath);

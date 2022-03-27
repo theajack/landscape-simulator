@@ -1,17 +1,17 @@
 {
-    "name": "landscape-simulator",
+    "name": "npm-ts-template",
     "version": "1.0.3",
     "description": "Simulate landscape in scenes that cannot be landscaped",
-    "main": "landscape-simulator.min.js",
-    "unpkg": "landscape-simulator.min.js",
-    "jsdelivr": "landscape-simulator.min.js",
-    "typings": "landscape-simulator.d.ts",
+    "main": "npm-ts-template.min.js",
+    "unpkg": "npm-ts-template.min.js",
+    "jsdelivr": "npm-ts-template.min.js",
+    "typings": "index.d.ts",
     "author": "theajack",
     "repository": {
         "type": "git",
-        "url": "https://github.com/theajack/landscape-simulator"
+        "url": "https://github.com/theajack/npm-ts-template"
     },
     "keywords": [
-        "landscape-simulator"
+        "npm-ts-template"
     ]
 }

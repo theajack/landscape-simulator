@@ -40,11 +40,11 @@
 在你喜欢的目录运行：
 
 ```
-git clone https://github.com/theajack/npm-ts-template.git
+git clone https://github.com/theajack/landscape-simulator.git
 ```
 
 ```
-cd npm-ts-template
+cd landscape-simulator
 ```
 
 使用淘宝镜像安装依赖

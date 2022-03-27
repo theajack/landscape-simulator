@@ -1,15 +1,17 @@
-### typescript运行环境demo
-
+## npm package to quickly generate templates
 
 
 --------
 
 <details>
-    <summary>Expand directory</summary>
+     <summary>Expand Contents</summary>
 
 <!-- toc -->
 
-
+- [1](#1)
+   * [1.1](#11)
+   * [1.2](#12)
+- [2](#2)
 
 <!-- tocstop -->
 
@@ -17,37 +19,48 @@
 
 --------
 
-这是一个支持eslint的typescript运行环境
+## 1
 
-只需要克隆，安装依赖就可以运行起来了，毕竟webpack、eslint、babel、ts的配置搞起来还是比较麻烦的～
+test toc
 
-在你喜欢的目录运行：
+### 1.1
 
-```
+1.1
+
+### 1.2
+
+1.2
+
+## 2
+
+This is a template to quickly build npm packages with eslint typescript support
+
+You only need to clone and install the dependencies and you can run it. After all, the configuration of webpack, eslint, babel, and ts is quite troublesome~
+
+In your preferred directory run:
+
+````
 git clone https://github.com/theajack/landscape-simulator.git
-```
+````
 
-```
+````
 cd landscape-simulator
-```
+````
 
-使用淘宝镜像安装依赖
+Install dependencies using Taobao mirror
 
-```
+````
 npm i --registry=https://registry.npm.taobao.org
-```
+````
 
-使用 webpack-dev-server 运行demo
+Run the demo with webpack-dev-server
 
-```
+````
 npm run dev
-```
+````
 
-打包：
+Pack:
 
-```
-npm run build
-```
-
-
-项目中有一些用不到的东西可以删除，代码就不介绍了，后面就到你自己发挥啦！
+````
+npm run build [version]
+````
