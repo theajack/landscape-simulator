@@ -1,0 +1,17 @@
+{
+    "name": "landscape-simulator",
+    "version": "1.0.3",
+    "description": "Simulate landscape in scenes that cannot be landscaped",
+    "main": "landscape-simulator.min.js",
+    "unpkg": "landscape-simulator.min.js",
+    "jsdelivr": "landscape-simulator.min.js",
+    "typings": "landscape-simulator.d.ts",
+    "author": "theajack",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/theajack/landscape-simulator"
+    },
+    "keywords": [
+        "landscape-simulator"
+    ]
+}
