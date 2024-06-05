@@ -1,8 +1,8 @@
 /*
  * @Author: tackchen
  * @Date: 2022-03-27 14:01:11
- * @LastEditors: tackchen
- * @LastEditTime: 2022-03-27 23:22:26
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-06-05 11:36:15
  * @FilePath: /landscape-simulator/src/rotate.ts
  * @Description: Coding something
  */
@@ -13,44 +13,56 @@ import {ISize} from './types/utils';
 // import {getScreenSize} from './util';
 
 let container: HTMLElement;
+let innerContainer: HTMLElement;
 
 export function getContainer () {
-    if (container) return container;
-    return initRotater();
+    if (innerContainer) return innerContainer;
+    return initRotate();
+}
+export function getInnerContainer () {
+    if (innerContainer) return innerContainer;
+    return initRotate();
 }
 
-export function initRotater (): HTMLElement {
-    if (container) return container;
+export function initRotate (): HTMLElement {
+    if (innerContainer) return innerContainer;
 
-    container = document.createElement('div');
-    container.setAttribute('id', 'RotateContainer');
+    innerContainer = document.createElement('div');
+    innerContainer.setAttribute('id', 'InnerContainer');
 
-    window.addEventListener('load', () => {
-        const body = document.body;
-        body.setAttribute('style', 'margin: 0;overflow: visible;');
-        container.setAttribute('style', 'overflow: auto');
-        const children = body.childNodes;
+    window.addEventListener('DOMContentLoaded', () => {
+
+        container = document.createElement('div');
+        container.setAttribute('id', 'Container');
+        container.setAttribute('style', 'margin: 0;overflow: visible;background-color: inherit;');
+
+        innerContainer.setAttribute('style', 'overflow: auto');
+        const children = document.body.childNodes;
 
         let index = 0;
         for (let length = children.length, i = 0; i < length; i++) {
             const child = children[index];
             if (child.nodeType === 3) {
-                container.append(child);
+                innerContainer.append(child);
             } else {
-                if (child.nodeName === 'SCRIPT' || child.nodeName === 'style') {
+                if (
+                    child.nodeName === 'SCRIPT' || child.nodeName === 'style' ||
+                    (child as HTMLElement).hasAttribute('ignore-simulate')
+                ) {
                     index ++;
                     continue;
                 }
-                container.appendChild(child);
+                innerContainer.appendChild(child);
             }
         }
-        body.appendChild(container);
-
+        container.appendChild(innerContainer);
+        document.body.style.margin = '0';
+        document.body.appendChild(container);
         initEventListener();
     }, true);
 
 
-    return container;
+    return innerContainer;
 }
 
 function initEventListener () {
@@ -60,6 +72,7 @@ function initEventListener () {
 }
 
 function reinitContainer (size: ISize) {
+
     if (!Orientation.isLandscape) {
         setContainerSize(size);
     } else {
@@ -72,26 +85,26 @@ function reinitContainer (size: ISize) {
 }
 
 function setContainerSize (size: ISize) {
-    getContainer().style.width = `${size.height}px`;
-    getContainer().style.height = `${size.width}px`;
-    document.body.style.width = '';
-    document.body.style.transform = 'rotate(90deg)';
+    getInnerContainer().style.width = `${size.height}px`;
+    getInnerContainer().style.height = `${size.width}px`;
+    container.style.width = '';
+    container.style.transform = 'rotate(90deg)';
     const min = Math.min(size.height, size.width);
     const origin = min / 2;
-    document.body.style.transformOrigin = `${origin}px ${origin}px`;
+    container.style.transformOrigin = `${origin}px ${origin}px`;
 
     // ! 使上一次重绘完成之后才设置body尺寸
     setTimeout(() => {
-        document.body.style.width = `${size.height}px`;
-        document.body.style.height = `${size.width}px`;
+        container.style.width = `${size.height}px`;
+        container.style.height = `${size.width}px`;
     }, 10);
 }
 
 function resetContainer (size: ISize) {
-    getContainer().style.width = `${size.width}px`;
-    getContainer().style.height = `${size.height}px`;
-    document.body.style.width = `${size.width}px`;
-    document.body.style.height = `${size.height}px`;
-    document.body.style.transform = 'rotate(0deg)';
-    document.body.style.transformOrigin = '';
+    getInnerContainer().style.width = `${size.width}px`;
+    getInnerContainer().style.height = `${size.height}px`;
+    container.style.width = `${size.width}px`;
+    container.style.height = `${size.height}px`;
+    container.style.transform = 'rotate(0deg)';
+    container.style.transformOrigin = '';
 }

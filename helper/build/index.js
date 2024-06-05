@@ -1,8 +1,8 @@
 /*
  * @Author: tackchen
  * @Date: 2022-03-27 12:32:16
- * @LastEditors: tackchen
- * @LastEditTime: 2022-03-27 13:23:36
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-06-05 11:41:10
  * @FilePath: /landscape-simulator/helper/build/index.js
  * @Description: Coding something
  */
@@ -11,7 +11,7 @@ const toc = require('gulp-markdown-toc');
 const gulp = require('gulp');
 const chalk = require('chalk');
 const {clearDirectory, logLoading, writeFile} = require('./utils');
-const buidPackageJson = require('./build-package-json');
+const buildPackageJson = require('./build-package-json');
 const modifyReadme = require('./modify-readme');
 
 function clearNpm () {
@@ -79,7 +79,7 @@ async function exec (cmd) {
 function syncVersion () {
     const done = logLoading('Syncing package version');
     const version = process.argv[2];
-    buidPackageJson(version);
+    buildPackageJson(version);
     writeFile('/src/version.ts', `export default '${version}';`);
     done();
 }

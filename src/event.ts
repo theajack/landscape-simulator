@@ -1,8 +1,8 @@
 /*
  * @Author: tackchen
  * @Date: 2022-03-27 14:21:41
- * @LastEditors: tackchen
- * @LastEditTime: 2022-03-27 23:21:56
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-06-05 11:14:44
  * @FilePath: /landscape-simulator/src/event.ts
  * @Description: Coding something
  */
@@ -18,7 +18,7 @@ export const Orientation = {
     isSimulateLandscape: false,
     isLandscape: false,
     value: ORIENTATION.VERTICAL,
-    lastLandscape: false,
+    lastLandscape: null as any as boolean,
 };
 
 export function setSimulateLandscape (bool: boolean) {
@@ -28,12 +28,12 @@ export function setSimulateLandscape (bool: boolean) {
 export function initDomEvent () {
     if (inited) return;
     inited = true;
-    initOritetation();
-    initOritetationChange();
+    initOrientation();
+    initOrientationChange();
     initSizeChange();
 }
 
-function initOritetation () {
+function initOrientation () {
     if (typeof window.onorientationchange !== 'undefined') {
         Orientation.isLandscape = (window.orientation !== ORIENTATION.VERTICAL);
         Orientation.value = window.orientation as number;
@@ -46,7 +46,7 @@ function initOritetation () {
     }
 }
 
-function initOritetationChange () {
+function initOrientationChange () {
     const onchange = (isLandscape: boolean, value: number) => {
         Orientation.value = value;
         Orientation.isLandscape = isLandscape;
@@ -87,5 +87,6 @@ function initSizeChange () {
         }, 30);
     });
 
+    // 主动触发一次
     emitSize();
 }

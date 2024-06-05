@@ -1,24 +1,35 @@
+/*
+ * @Author: chenzhongsheng
+ * @Date: 2024-06-05 11:00:22
+ * @Description: Coding something
+ */
 import event from 'tc-event';
 import {config, initConfig} from './config';
 import {EVENT} from './constant';
 import {initDomEvent, Orientation} from './event';
-import {getContainer, initRotater} from './rotate';
+import {getInnerContainer, initRotate} from './rotate';
 import {IConfigOption} from './types/utils';
 import {getScreenSize, isMobile} from './util';
 
 const LandscapeSimulator = {
-    init (option: IConfigOption = {}) {
+    isEnabled () {
+        return !(!isMobile() && config.disablePc);
+    },
+    init (option: IConfigOption = {
+        disablePc: true,
+    }): Promise<boolean> {
         initConfig(option);
-        if (!isMobile() && config.disablePc) return;
+        if (!this.isEnabled()) return Promise.resolve(false);
         initDomEvent();
-        initRotater();
+        initRotate();
+
+        return new Promise((resolve) => {
+            event.registOnce(EVENT.SIMULATE_CHANGE, (bool) => {resolve(bool);});
+        });
+
     },
     appendChild (dom: HTMLElement) {
-        if (!isMobile() && config.disablePc) {
-            document.body.appendChild(dom);
-        } else {
-            getContainer().appendChild(dom);
-        }
+        this.getContainer().appendChild(dom);
     },
     getSimulateSize () {
         const size = getScreenSize();
@@ -31,17 +42,24 @@ const LandscapeSimulator = {
         };
     },
     isSimulateLandscape () {
-        if (!isMobile() && config.disablePc) return false;
+        if (!this.isEnabled()) return false;
         return !Orientation.isLandscape;
     },
     onSimulateChange (callback: (bool: boolean) => void) {
         event.regist(EVENT.SIMULATE_CHANGE, callback);
     },
+    getContainer () {
+        return this.isEnabled() ? getInnerContainer() : document.body;
+    }
 };
 
-if (!document.querySelector('script[auto-simulate=false]')) {
-    const disablePc = !document.querySelector('script[disable-pc=false]');
-    LandscapeSimulator.init({disablePc});
+if ('undefined' !== typeof document) {
+    const script = document.querySelector('script[auto-simulate=true]');
+    if (script) {
+        const disablePc = script.getAttribute('disable-pc') !== 'false';
+        LandscapeSimulator.init({disablePc});
+    }
 }
+
 
 export default LandscapeSimulator;

@@ -1,8 +1,8 @@
 /*
  * @Author: tackchen
  * @Date: 2022-03-27 12:03:42
- * @LastEditors: tackchen
- * @LastEditTime: 2022-03-27 23:59:11
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2024-06-05 11:34:14
  * @FilePath: /landscape-simulator/public/main.ts
  * @Description: Coding something
  */
@@ -11,7 +11,13 @@ import LandscapeSimulator from '../src/index';
 
 (window as any).LandscapeSimulator = LandscapeSimulator;
 
-// LandscapeSimulator.init({
-//     disablePc: false
-// });
+LandscapeSimulator.init().then((bool) => {
+    // console.log(LandscapeSimulator.getSimulateSize());
+    // console.warn(`Success: ${bool}`);
+});
+
+LandscapeSimulator.onSimulateChange((bool) => {
+    // console.warn(`onSimulateChange: ${bool}`);
+});
+
 

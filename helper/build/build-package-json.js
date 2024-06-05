@@ -11,7 +11,7 @@ const {writeJsonFile, mkdirDir} = require('./utils');
 
 const keys = ['name', 'version', 'description', 'main', 'unpkg', 'jsdelivr', 'typings', 'author', 'repository', 'keywords', 'dependencies'];
 
-function buidPackageJson (version) {
+function buildPackageJson (version) {
     const package = {};
     keys.forEach(key => {
         package[key] = pkg[key];
@@ -31,4 +31,4 @@ function buidPackageJson (version) {
     writeJsonFile('/npm/package.json', package);
 };
 
-module.exports = buidPackageJson;
+module.exports = buildPackageJson;
