@@ -41,7 +41,7 @@ async function build ({
     output = resolveRootPath('npm/landscape-simulator.min.js'),
     format = 'umd',
     external = packageInfo.external,
-    name = 'EbuildDemo',
+    name = 'LandscapeSimulator',
 } = {}) {
     const inputOptions = {
         input: transfromFilePath(input), // 唯一必填参数

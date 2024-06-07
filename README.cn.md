@@ -47,10 +47,10 @@ const isSimulated = await LandscapeSimulator.init({
 使用cdn方式时，可将script标签放置在head中
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/landscape-simulator/landscape-simulator.min.js"></script>
+<script auto-simulate='true' src="https://cdn.jsdelivr.net/npm/landscape-simulator"></script>
 ```
 
-可以使用属性 `auto-simulate=false` 来控制不要使用自动开启模拟，默认为自动开启。
+可以使用属性 `auto-simulate=true` 来控制自动开启模拟，默认为false。
 
 可以使用属性 `disable-pc=false` 来控制在pc端也开启模拟，默认为在pc端不开启。
 

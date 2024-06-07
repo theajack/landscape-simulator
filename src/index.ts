@@ -10,8 +10,10 @@ import {initDomEvent, Orientation} from './event';
 import {getInnerContainer, initRotate} from './rotate';
 import {IConfigOption} from './types/utils';
 import {getScreenSize, isMobile} from './util';
+import version from './version';
 
 const LandscapeSimulator = {
+    version,
     isEnabled () {
         return !(!isMobile() && config.disablePc);
     },

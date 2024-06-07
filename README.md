@@ -47,10 +47,10 @@ It is recommended to place the above initialization code in the head for executi
 When using the cdn method, the script tag can be placed in the head
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/landscape-simulator/landscape-simulator.min.js"></script>
+<script auto-simulate='true' src="https://cdn.jsdelivr.net/npm/landscape-simulator/landscape-simulator.min.js"></script>
 ```
 
-You can use the property `auto-simulate=false` to control not to use auto-on simulation, the default is auto-on.
+You can use the property `auto-simulate=true` to control to use auto-on simulation, the default is `false`
 
 You can use the attribute `disable-pc=false` to control the simulation to be enabled on the pc side. The default is not to enable it on the pc side.
 

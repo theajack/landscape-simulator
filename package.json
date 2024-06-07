@@ -1,6 +1,6 @@
 {
     "name": "landscape-simulator",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Simulate landscape in scenes that cannot be landscaped",
     "main": "landscape-simulator.min.js",
     "unpkg": "landscape-simulator.min.js",
@@ -26,7 +26,7 @@
     ],
     "license": "MIT",
     "dependencies": {
-        "tc-event": "^0.0.6"
+        "tc-event": "^0.1.2"
     },
     "devDependencies": {
         "@babel/core": "^7.6.4",
