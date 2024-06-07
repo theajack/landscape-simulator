@@ -2,7 +2,7 @@
 
 <p>
     <a href="https://www.github.com/theajack/landscape-simulator"><img src="https://img.shields.io/github/stars/theajack/landscape-simulator.svg?style=social" alt="star"></a>
-    <a href="https://theajack.gitee.io"><img src="https://img.shields.io/badge/author-theajack-blue.svg?style=social" alt="Author"></a>
+    <a href="https://theajack.github.io"><img src="https://img.shields.io/badge/author-theajack-blue.svg?style=social" alt="Author"></a>
 </p> 
 
 <p>
@@ -14,33 +14,9 @@
     <a href="https://github.com/theajack/landscape-simulator/issues"><img src="https://img.shields.io/github/issues-closed/theajack/landscape-simulator.svg" alt="issue"></a>
 </p>
 
-<h3>🚀 横屏模拟器-在无法横屏的场景模拟横屏</h3>
+<h3>🚀 横屏模拟器-竖屏时模拟横屏效果</h3>
 
-**[在线体验](https://theajack.gitee.io/landscape-simulator) | [English](https://github.com/theajack/landscape-simulator/blob/master/README.md) | [更新日志](https://github.com/theajack/landscape-simulator/blob/master/helper/version.md) | [Issue](https://github.com/theajack/landscape-simulator/issues/new) | [Gitee](https://gitee.com/theajack/landscape-simulator)**
-
---------
-
-<details>
-    <summary>展开目录</summary>
-
-<!-- toc -->
-
-- [1. 特性](#1-%E7%89%B9%E6%80%A7)
-- [2. 快速使用](#2-%E5%BF%AB%E9%80%9F%E4%BD%BF%E7%94%A8)
-  * [1.1 npm 方式](#11-npm-%E6%96%B9%E5%BC%8F)
-  * [1.2 cdn](#12-cdn)
-- [2 API](#2-api)
-  * [2.1 init](#21-init)
-  * [2.2 appendChild](#22-appendchild)
-  * [2.3 getSimulateSize](#23-getsimulatesize)
-  * [2.4 isSimulateLandscape](#24-issimulatelandscape)
-  * [2.5 onSimulateChange](#25-onsimulatechange)
-
-<!-- tocstop -->
-
-</details>
-
---------
+**[在线体验](https://theajack.github.io/landscape-simulator) | [English](https://github.com/theajack/landscape-simulator/blob/master/README.md) | [更新日志](https://github.com/theajack/landscape-simulator/blob/master/helper/version.md) | [Issue](https://github.com/theajack/landscape-simulator/issues/new) | [Gitee](https://gitee.com/theajack/landscape-simulator)**
 
 ## 1. 特性
 
@@ -59,7 +35,7 @@ npm i landscape-simulator
 ```js
 import LandscapeSimulator from 'landscape-simulator';
 
-LandscapeSimulator.init({
+const isSimulated = await LandscapeSimulator.init({
   disablePc: false, // 默认为true
 })
 ```
@@ -126,3 +102,14 @@ LandscapeSimulator.onSimulateChange(isSimulate => {
 });
 ```
 
+### 2.6 isEnabled
+
+```js
+const bool = LandscapeSimulator.isEnabled()
+```
+
+### 2.7 getContainer
+
+```js
+const container = LandscapeSimulator.getContainer()
+```

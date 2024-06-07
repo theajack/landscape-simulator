@@ -2,14 +2,19 @@
     "name": "landscape-simulator",
     "version": "0.0.2",
     "description": "Simulate landscape in scenes that cannot be landscaped",
-    "main": "index.js",
+    "main": "landscape-simulator.min.js",
     "unpkg": "landscape-simulator.min.js",
     "jsdelivr": "landscape-simulator.min.js",
-    "typings": "index.d.ts",
+    "typings": "landscape-simulator.min.d.ts",
     "scripts": {
-        "dev": "webpack-dev-server --open --config webpack-config/dev.js",
-        "build": "node ./helper/build/index.js",
-        "lint": "eslint src --ext js"
+        "lint": "eslint --fix --ext .js --ext .ts scripts src",
+        "dev": "node scripts/dev/dev.js",
+        "build": "node scripts/build/build.js",
+        "dev:docs": "node scripts/docs/dev.js",
+        "build:docs": "node scripts/docs/build.js",
+        "purge": "node scripts/purge-cdn.js",
+        "release": "node scripts/push-release.js",
+        "publish": "node scripts/publish.js"
     },
     "author": "theajack",
     "repository": {
@@ -58,5 +63,8 @@
         "hooks": {
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
+    },
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
     }
 }

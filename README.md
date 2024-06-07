@@ -2,7 +2,7 @@
 
 <p>
     <a href="https://www.github.com/theajack/landscape-simulator"><img src="https://img.shields.io/github/stars/theajack/landscape-simulator.svg?style=social" alt="star"></a>
-    <a href="https://theajack.gitee.io"><img src="https://img.shields.io/badge/author-theajack-blue.svg?style=social" alt="Author"></a>
+    <a href="https://theajack.github.io"><img src="https://img.shields.io/badge/author-theajack-blue.svg?style=social" alt="Author"></a>
 </p> 
 
 <p>
@@ -14,33 +14,9 @@
     <a href="https://github.com/theajack/landscape-simulator/issues"><img src="https://img.shields.io/github/issues-closed/theajack/landscape-simulator.svg" alt="issue"></a>
 </p>
 
-<h3>🚀 Landscape Simulator-Simulate landscape in scenes that cannot be landscaped</h3>
+<h3>🚀 Landscape Simulator - Simulate horizontal screen effect when in portrait mode</h3>
 
-**[Online Use](https://theajack.gitee.io/landscape-simulator) | [中文](https://github.com/theajack/landscape-simulator/blob/master/README.cn.md) | [Changelog](https://github.com/theajack/landscape-simulator/blob/master/helper/version.md) | [Issue](https://github.com/theajack/landscape-simulator/issues/new) | [Gitee](https://gitee.com/theajack/landscape-simulator)**
-
---------
-
-<details>
-    <summary>Expand directory</summary>
-
-<!-- toc -->
-
-- [1. Features](#1-features)
-- [2. Quick use](#2-quick-use)
-  * [1.1 npm way](#11-npm-way)
-  * [1.2 cdn](#12-cdn)
-- [2 APIs](#2-apis)
-  * [2.1 init](#21-init)
-  * [2.2 appendChild](#22-appendchild)
-  * [2.3 getSimulateSize](#23-getsimulatesize)
-  * [2.4 isSimulateLandscape](#24-issimulatelandscape)
-  * [2.5 onSimulateChange](#25-onsimulatechange)
-
-<!-- tocstop -->
-
-</details>
-
---------
+**[Online Use](https://theajack.github.io/landscape-simulator) | [中文](https://github.com/theajack/landscape-simulator/blob/master/README.cn.md) | [Changelog](https://github.com/theajack/landscape-simulator/blob/master/helper/version.md) | [Issue](https://github.com/theajack/landscape-simulator/issues/new) | [Gitee](https://gitee.com/theajack/landscape-simulator)**
 
 ## 1. Features
 
@@ -52,17 +28,17 @@
 
 ### 1.1 npm way
 
-````
+```
 npm i landscape-simulator
-````
+```
 
-````js
+```js
 import LandscapeSimulator from 'landscape-simulator';
 
 LandscapeSimulator.init({
   disablePc: false, // default is true
 })
-````
+```
 
 It is recommended to place the above initialization code in the head for execution
 
@@ -72,7 +48,7 @@ When using the cdn method, the script tag can be placed in the head
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/landscape-simulator/landscape-simulator.min.js"></script>
-````
+```
 
 You can use the property `auto-simulate=false` to control not to use auto-on simulation, the default is auto-on.
 
@@ -86,42 +62,54 @@ When referenced by cdn, the `LandscapeSimulator` object will be mounted on the w
 
 Initialize the simulator, which will be automatically initialized when referenced by cdn
 
-````js
-LandscapeSimulator.init({
+```js
+const isSimulated = await LandscapeSimulator.init({
   disablePc: false, // default is true
-})
-````
+});
+```
 
 ### 2.2 appendChild
 
 Add child elements to a rotating container
 
-````js
+```js
 LandscapeSimulator.appendChild(htmlElement);
-````
+```
 
 ### 2.3 getSimulateSize
 
 Get the emulated later screen size
 
-````js
+```js
 const size = LandscapeSimulator.getSimulateSize();
-````
+```
 
 ### 2.4 isSimulateLandscape
 
 Get whether it is currently in a state of simulating a landscape screen
 
-````js
+```js
 const bool = LandscapeSimulator.isSimulateLandscape();
-````
+```
 
 ### 2.5 onSimulateChange
 
 Listen for changes in the state of the simulated horizontal screen
 
-````js
+```js
 LandscapeSimulator.onSimulateChange(isSimulate => {
   
 });
-````
+```
+
+### 2.6 isEnabled
+
+```js
+const bool = LandscapeSimulator.isEnabled()
+```
+
+### 2.7 getContainer
+
+```js
+const container = LandscapeSimulator.getContainer()
+```

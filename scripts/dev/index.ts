@@ -1,13 +1,10 @@
 /*
  * @Author: tackchen
- * @Date: 2022-03-27 12:03:42
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2024-06-05 11:34:14
- * @FilePath: /landscape-simulator/public/main.ts
+ * @Date: 2022-08-03 20:32:39
  * @Description: Coding something
  */
-import LandscapeSimulator from '../src/index';
-// import LandscapeSimulator from '../npm/index';
+// import LandscapeSimulator from '../../src/index';
+import LandscapeSimulator from '../../npm';
 
 (window as any).LandscapeSimulator = LandscapeSimulator;
 
@@ -19,5 +16,4 @@ LandscapeSimulator.init().then((bool) => {
 LandscapeSimulator.onSimulateChange((bool) => {
     // console.warn(`onSimulateChange: ${bool}`);
 });
-
 

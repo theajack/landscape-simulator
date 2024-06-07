@@ -1,4 +1,5 @@
-/public/bundle.js
-/public/index.html
-/npm
-index.html
+node_modules
+scripts/dev/*.js
+*.html
+npm
+docs
